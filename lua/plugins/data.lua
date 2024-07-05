@@ -5,6 +5,10 @@ return {
     version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
     dependencies = { "3rd/image.nvim" },
     build = ":UpdateRemotePlugins",
+    keys = {
+      { "<leader>mi", mode = { "n" }, ":MoltenInit<CR>", desc = "Init molten" },
+      { "<leader>ml", mode = { "n" }, ":MoltenEvaluateLine<CR>", desc = "Evaluate Line" },
+    },
     init = function()
       -- these are examples, not defaults. Please see the readme
       vim.g.molten_image_provider = "image.nvim"
@@ -23,5 +27,16 @@ return {
       window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
       window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
     },
+  },
+  {
+    "GCBallesteros/jupytext.nvim",
+    lazy = false,
+    config = function()
+      require("jupytext").setup({
+        style = "markdown",
+        output_extension = "md",
+        force_ft = "markdown",
+      })
+    end,
   },
 }
