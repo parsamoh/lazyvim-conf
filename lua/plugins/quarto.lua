@@ -5,7 +5,7 @@ return {
   keys = function()
     local runner = require("quarto.runner")
     return {
-      { "<localleader>rc", runner.run_cell, desc = "Run Cell" },
+      { "<leader>rc", mode = { "n" }, runner.run_cell, desc = "Run Cell" },
     }
   end,
   dev = false,
